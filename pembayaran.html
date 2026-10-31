@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Pembayaran - Dhone</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container">
+        <a class="logo" href="home.html">Dhone.com</a>
+      </div>
+    </nav>
+    <main class="container">
+      <form class="form-box" onsubmit="savePayment(event)">
+        <h1>Pembayaran Tiket</h1>
+        <div id="order-summary">
+          <p><b>Soundwave Fest 2026</b><br />Festival — 2 Tiket</p>
+          <p>Total pembayaran: <b class="price">Rp500.000</b></p>
+        </div>
+        <p>Transfer ke: <b>BCA 1234567890 a.n Dhone Indonesia</b></p>
+        <p class="form-note">Batas pembayaran: hari ini, 23.59 WIB</p>
+        <div class="form-group">
+          <label>Upload bukti pembayaran</label
+          ><input type="file" required accept="image/*" />
+        </div>
+        <button class="btn" style="width: 100%">Kirim Bukti Pembayaran</button>
+        <div class="notice" id="payment-success">
+          Bukti pembayaran berhasil dikirim. Silakan tunggu verifikasi admin.
+        </div>
+      </form>
+    </main>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

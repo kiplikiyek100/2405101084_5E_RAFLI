@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Daftar Konser - Dhone</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="container nav-wrap">
+        <a class="logo" href="home.html">Dhone.com</a>
+        <div class="menu">
+          <a href="konser.html">Konser</a><a href="jasa-eo.html">Jasa EO</a
+          ><a href="riwayat.html">Pesanan</a>
+        </div>
+      </div>
+    </nav>
+    <div class="page-head">
+      <div class="container">
+        <h1>Daftar Konser</h1>
+        <p>Temukan konser sesuai kota dan musik favoritmu.</p>
+      </div>
+    </div>
+    <main class="container">
+      <section>
+        <div class="filter">
+          <input
+            id="search"
+            oninput="searchConcert()"
+            placeholder="Cari nama konser atau kota"
+          /><select>
+            <option>Semua Kota</option>
+            <option>Jakarta</option>
+            <option>Bandung</option></select
+          ><select>
+            <option>Semua Genre</option>
+            <option>Pop</option>
+            <option>Rock</option>
+          </select>
+        </div>
+        <div class="grid" id="concert-list"></div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="container">© 2026 Dhone.com</div>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
