@@ -13,40 +13,8 @@
         <div class="menu"><a href="home.html">Lihat Website</a></div>
       </div>
     </nav>
-    <main class="container">
-      <section id="admin-login-area">
-        <form class="form-box" onsubmit="loginAdmin(event)">
-          <h1>Login Admin</h1>
-          <p class="form-note">Masukkan akun admin untuk membuka dashboard.</p>
-          <div class="form-group">
-            <label for="admin-email">Email</label
-            ><input
-              id="admin-email"
-              type="email"
-              required
-              placeholder="admin@dhone.com"
-            />
-          </div>
-          <div class="form-group">
-            <label for="admin-password">Kata Sandi</label
-            ><input
-              id="admin-password"
-              type="password"
-              required
-              placeholder="Masukkan kata sandi"
-            />
-          </div>
-          <p
-            id="admin-login-error"
-            class="form-note"
-            style="color: #c6374f"
-          ></p>
-          <button class="btn" style="width: 100%" type="submit">
-            Masuk sebagai Admin
-          </button>
-        </form>
-      </section>
-      <section id="admin-dashboard" class="admin-layout" style="display: none">
+    <main>
+      <section id="admin-dashboard" class="admin-layout">
         <aside class="admin-sidebar">
           <a class="logo" href="admin.html">Dhone<span>.Admin</span></a>
           <p class="admin-role">ADMINISTRATOR</p>
@@ -66,7 +34,7 @@
             <p>Panel pengelolaan Dhone.com</p>
             <span>Admin</span>
           </div>
-          <div class="nav-wrap" id="ringkasan">
+          <div class="nav-wrap admin-heading" id="ringkasan">
             <div>
               <h1 class="section-title">Dashboard Admin</h1>
               <p class="section-subtitle">
@@ -93,7 +61,9 @@
             </div>
           </div>
           <div class="admin-section" id="kelola-konser">
-            <h2>Tambah Konser</h2>
+            <h2>Kelola Konser</h2>
+            <p class="section-subtitle">Tambahkan konser baru atau hapus konser yang sudah tidak tersedia.</p>
+            <h3>Tambah Konser Baru</h3>
             <form class="form-box admin-form" onsubmit="tambahKonser(event)">
               <div class="two-col">
                 <div class="form-group">

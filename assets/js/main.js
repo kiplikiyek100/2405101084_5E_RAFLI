@@ -180,8 +180,7 @@ function kirimPermintaanEO(e) {
 
 function renderAdmin() {
   const concertTarget = document.getElementById("admin-concert-list");
-  if (!concertTarget || localStorage.getItem("dhoneAdminLogin") !== "true")
-    return;
+  if (!concertTarget) return;
 
   const daftarKonser = getKonser();
   const pesanan = getPesanan();
@@ -271,9 +270,7 @@ function tampilkanDashboardAdmin() {
 }
 
 function cekLoginAdmin() {
-  if (localStorage.getItem("dhoneAdminLogin") === "true") {
-    tampilkanDashboardAdmin();
-  }
+  // Dashboard admin ditampilkan langsung pada halaman admin.
 }
 
 function logoutAdmin() {

@@ -101,6 +101,10 @@ a {
 }
 .admin-section {
   margin-bottom: 35px;
+  scroll-margin-top: 20px;
+}
+.admin-heading {
+  margin-bottom: 8px;
 }
 .admin-form {
   max-width: none;
