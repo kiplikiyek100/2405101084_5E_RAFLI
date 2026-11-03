@@ -52,6 +52,10 @@ a {
 .menu a:hover {
   color: var(--utama);
 }
+.menu a[aria-current="page"]:not(.btn) {
+  color: var(--utama);
+  font-weight: bold;
+}
 .btn {
   display: inline-block;
   background: var(--utama);
@@ -487,6 +491,8 @@ textarea {
   .menu {
     gap: 10px;
     font-size: 13px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
   }
   .hero-grid,
   .detail,
