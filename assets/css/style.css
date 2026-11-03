@@ -345,6 +345,17 @@ section {
   padding: 28px 0;
   margin-top: 30px;
 }
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 30px;
+}
+.footer .logo { color: #fff; }
+.footer h3 { color: #fff; font-size: 16px; margin: 0 0 10px; }
+.footer p { margin: 5px 0; font-size: 14px; }
+.footer-grid a:not(.logo) { display: block; margin: 6px 0; font-size: 14px; }
+.footer-grid a:hover, .login-admin-link a { color: #cdb8ff; }
+.footer-bottom { border-top: 1px solid #4b3d5d; margin-top: 25px; padding-top: 18px; font-size: 13px; }
 .page-head {
   background: var(--abu);
   padding: 35px 0;
@@ -456,9 +467,16 @@ textarea {
   border-radius: 7px;
   color: #fff;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.portfolio span { font-size: 13px; font-weight: normal; margin-top: 8px; }
+.portfolio:hover { transform: translateY(-4px); box-shadow: 0 8px 18px #22113b44; }
+.portfolio-two { background: linear-gradient(135deg, #3874ba, #51398e); }
+.portfolio-three { background: linear-gradient(135deg, #009d7c, #10483d); }
 }
 .empty {
   text-align: center;
@@ -487,6 +505,7 @@ textarea {
   .steps {
     flex-direction: column;
   }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-wrap {
     flex-wrap: wrap;
   }
@@ -497,4 +516,7 @@ textarea {
   .table {
     font-size: 13px;
   }
+}
+@media (max-width: 450px) {
+  .footer-grid { grid-template-columns: 1fr; }
 }

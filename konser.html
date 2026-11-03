@@ -3,23 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Daftar Konser - Dhone</title>
+    <title>Daftar Event - Dhone</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <nav class="navbar">
       <div class="container nav-wrap">
-        <a class="logo" href="home.html">Dhone.com</a>
+        <a class="logo" href="index.html">Dhone.com</a>
         <div class="menu">
-          <a href="konser.html">Konser</a><a href="jasa-eo.html">Jasa EO</a
-          ><a href="riwayat.html">Pesanan</a>
+          <a href="index.html">Beranda</a><a href="konser.html">Event</a><a href="jasa-eo.html">Jasa EO</a
+          ><a href="riwayat.html">Pesanan</a><a class="btn btn-small" href="login.html">Masuk</a>
         </div>
       </div>
     </nav>
     <div class="page-head">
       <div class="container">
-        <h1>Daftar Konser</h1>
-        <p>Temukan konser sesuai kota dan musik favoritmu.</p>
+        <h1>Daftar Event</h1>
+        <p>Temukan event sesuai kota dan musik favoritmu.</p>
       </div>
     </div>
     <main class="container">
@@ -28,7 +28,7 @@
           <input
             id="search"
             oninput="searchConcert()"
-            placeholder="Cari nama konser atau kota"
+            placeholder="Cari nama event atau kota"
           /><select>
             <option>Semua Kota</option>
             <option>Jakarta</option>
@@ -43,7 +43,13 @@
       </section>
     </main>
     <footer class="footer">
-      <div class="container">© 2026 Dhone.com</div>
+      <div class="container footer-grid">
+        <div><a class="logo" href="index.html">Dhone.com</a><p>Platform event dan tiket resmi untuk momen yang lebih berkesan.</p></div>
+        <div><h3>Navigasi</h3><a href="index.html">Beranda</a><a href="konser.html">Event</a><a href="jasa-eo.html">Jasa EO</a></div>
+        <div><h3>Bantuan</h3><a href="riwayat.html">Pesanan Saya</a><a href="login.html">Masuk / Daftar</a><a href="admin.html">Login Admin</a></div>
+        <div><h3>Hubungi Kami</h3><p>Email: halo@dhone.com</p><p>WhatsApp: 0812-3456-7890</p><p>Jakarta, Indonesia</p></div>
+      </div>
+      <div class="container footer-bottom">© 2026 Dhone.com — Semua hak dilindungi.</div>
     </footer>
     <script src="assets/js/main.js"></script>
   </body>

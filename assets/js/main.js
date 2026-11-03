@@ -76,12 +76,32 @@ function registerForm(e) {
 }
 function loginForm(e) {
   e.preventDefault();
+  const email = e.target.querySelector('input[type="email"]').value;
+  const password = e.target.querySelector('input[type="password"]').value;
+  const params = new URLSearchParams(location.search);
+  if (params.get("admin") === "1") {
+    if (email !== "admin@dhone.com" || password !== "admin123") {
+      alert("Email atau kata sandi admin salah.");
+      return;
+    }
+    localStorage.setItem("dhoneAdminLogin", "true");
+    location.href = "admin.html";
+    return;
+  }
+  const nama = localStorage.getItem("dhoneUser") || email.split("@")[0];
   localStorage.setItem("dhoneLogin", "true");
+  localStorage.setItem("dhoneUser", nama);
   alert("Login berhasil!");
-  location.href = "index.html";
+  location.href = params.get("redirect") || "index.html";
 }
 function orderTicket(e) {
   e.preventDefault();
+  if (localStorage.getItem("dhoneLogin") !== "true") {
+    const concertId = new URLSearchParams(location.search).get("id") || "";
+    alert("Silakan masuk terlebih dahulu untuk membeli tiket event.");
+    location.href = `login.html?redirect=detail-konser.html%3Fid%3D${encodeURIComponent(concertId)}`;
+    return;
+  }
   const concertId = new URLSearchParams(location.search).get("id");
   const concert =
     getKonser().find((item) => item.id === concertId) || getKonser()[0];
@@ -109,6 +129,27 @@ function renderConcertDetail() {
   const concert =
     getKonser().find((item) => item.id === concertId) || getKonser()[0];
   document.title = `${concert.nama} - Dhone`;
+  const sudahLogin = localStorage.getItem("dhoneLogin") === "true";
+  const formulirPesanan = sudahLogin
+    ? `<form class="order-box" onsubmit="orderTicket(event)">
+       <h2>Pesan Tiket</h2>
+       <p>Kategori: <b>Festival</b></p>
+       <p class="price">${formatRupiah(concert.harga)} / tiket</p>
+       <p class="info">Sisa kuota: 120 tiket</p>
+       <hr />
+       <h3>Data Pembeli</h3>
+       <div class="form-group"><label for="nama-pembeli">Nama Lengkap</label><input id="nama-pembeli" type="text" required value="${localStorage.getItem("dhoneUser") || ""}" placeholder="Masukkan nama lengkap" /></div>
+       <div class="form-group"><label for="email-pembeli">Email</label><input id="email-pembeli" type="email" required placeholder="nama@email.com" /></div>
+       <div class="form-group"><label for="hp-pembeli">Nomor HP / WhatsApp</label><input id="hp-pembeli" type="tel" required placeholder="Contoh: 081234567890" /></div>
+       <div class="form-group"><label for="jumlah">Jumlah tiket</label><input id="jumlah" type="number" min="1" max="5" value="1" required /></div>
+       <button class="btn" style="width: 100%" type="submit">Pesan Sekarang</button>
+     </form>`
+    : `<aside class="order-box">
+        <h2>Pesan Tiket</h2>
+        <p class="price">${formatRupiah(concert.harga)} / tiket</p>
+        <p class="form-note">Kamu perlu masuk ke akun terlebih dahulu untuk membeli tiket event ini.</p>
+        <a class="btn" style="width: 100%; text-align: center" href="login.html?redirect=detail-konser.html%3Fid%3D${encodeURIComponent(concert.id)}">Masuk untuk Beli Tiket</a>
+      </aside>`;
 
   target.innerHTML = `
     <div>
@@ -120,19 +161,7 @@ function renderConcertDetail() {
       <h3>Penampil</h3>
       <p>${concert.lineup}</p>
     </div>
-    <form class="order-box" onsubmit="orderTicket(event)">
-      <h2>Pesan Tiket</h2>
-      <p>Kategori: <b>Festival</b></p>
-      <p class="price">${formatRupiah(concert.harga)} / tiket</p>
-      <p class="info">Sisa kuota: 120 tiket</p>
-      <hr />
-      <h3>Data Pembeli</h3>
-      <div class="form-group"><label for="nama-pembeli">Nama Lengkap</label><input id="nama-pembeli" type="text" required placeholder="Masukkan nama lengkap" /></div>
-      <div class="form-group"><label for="email-pembeli">Email</label><input id="email-pembeli" type="email" required placeholder="nama@email.com" /></div>
-      <div class="form-group"><label for="hp-pembeli">Nomor HP / WhatsApp</label><input id="hp-pembeli" type="tel" required placeholder="Contoh: 081234567890" /></div>
-      <div class="form-group"><label for="jumlah">Jumlah tiket</label><input id="jumlah" type="number" min="1" max="5" value="1" required /></div>
-      <button class="btn" style="width: 100%" type="submit">Pesan Sekarang</button>
-    </form>
+    ${formulirPesanan}
   `;
 }
 
@@ -174,7 +203,7 @@ function kirimPermintaanEO(e) {
     status: "Menunggu Tanggapan",
   });
   localStorage.setItem("dhoneEO", JSON.stringify(permintaan));
-  alert("Permintaan penawaran berhasil dikirim!");
+  alert("Permintaan jasa EO berhasil dikirim!");
   e.target.reset();
 }
 
@@ -253,7 +282,7 @@ function loginAdmin(e) {
 
   if (email === "admin@dhone.com" && password === "admin123") {
     localStorage.setItem("dhoneAdminLogin", "true");
-    tampilkanDashboardAdmin();
+    location.href = "admin.html";
     return;
   }
 
@@ -270,7 +299,13 @@ function tampilkanDashboardAdmin() {
 }
 
 function cekLoginAdmin() {
-  // Dashboard admin ditampilkan langsung pada halaman admin.
+  const dashboard = document.getElementById("admin-dashboard");
+  if (!dashboard) return;
+  if (localStorage.getItem("dhoneAdminLogin") === "true") {
+    renderAdmin();
+    return;
+  }
+  location.href = "login.html?admin=1";
 }
 
 function logoutAdmin() {
@@ -287,6 +322,15 @@ function renderHistory() {
       : '<tr><td colspan="5" class="empty">Belum ada pesanan. Yuk pilih konser!</td></tr>';
 }
 document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(location.search);
+  if (params.get("admin") === "1") {
+    const title = document.getElementById("login-title");
+    const description = document.getElementById("login-description");
+    const switchLink = document.getElementById("login-switch");
+    if (title) title.textContent = "Login Admin";
+    if (description) description.textContent = "Masuk untuk mengelola event dan pesanan.";
+    if (switchLink) switchLink.innerHTML = 'Pembeli tiket? <a href="login.html">Masuk sebagai pengguna</a>';
+  }
   showConcerts("featured");
   showConcerts("concert-list");
   renderConcertDetail();

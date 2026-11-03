@@ -9,13 +9,13 @@
   <body>
     <nav class="navbar">
       <div class="container">
-        <a class="logo" href="home.html">Dhone.com</a>
+        <a class="logo" href="index.html">Dhone.com</a>
       </div>
     </nav>
     <main class="container">
       <form class="form-box" onsubmit="loginForm(event)">
-        <h1>Masuk</h1>
-        <p class="form-note">Masuk untuk melihat pesanan kamu.</p>
+        <h1 id="login-title">Masuk</h1>
+        <p id="login-description" class="form-note">Masuk untuk membeli tiket dan melihat pesanan kamu.</p>
         <div class="form-group">
           <label>Email</label
           ><input type="email" required placeholder="nama@email.com" />
@@ -28,6 +28,9 @@
         <p class="form-note">
           Belum punya akun?
           <a href="register.html" style="color: #6c3cc9">Daftar di sini</a>
+        </p>
+        <p id="login-switch" class="form-note login-admin-link">
+          Administrator? <a href="login.html?admin=1">Login sebagai admin</a>
         </p>
       </form>
     </main>

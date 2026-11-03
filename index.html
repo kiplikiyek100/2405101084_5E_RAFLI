@@ -3,57 +3,74 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dhone.com</title>
+    <title>Dhone.com - Event & Tiket</title>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <nav class="navbar">
       <div class="container nav-wrap">
         <a class="logo" href="index.html">Dhone.com</a>
+        <div class="menu">
+          <a href="index.html">Beranda</a><a href="konser.html">Event</a
+          ><a href="jasa-eo.html">Jasa EO</a><a href="riwayat.html">Pesanan</a
+          ><a class="btn btn-small" href="login.html">Masuk</a>
+        </div>
       </div>
     </nav>
-    <main>
-      <section class="landing-hero">
-        <div class="container hero-grid">
+    <header class="hero">
+      <div class="container hero-grid">
           <div>
-            <p class="landing-label">SATU TEMPAT UNTUK SEMUA EVENT</p>
-            <h1>Musik, momen, dan acara impianmu dimulai dari sini.</h1>
+            <p>PLATFORM EVENT & TIKET</p>
+            <h1>Temukan momen musik terbaikmu.</h1>
             <p>
-              Pesan tiket konser favorit atau rencanakan event terbaik bersama
-              tim Event Organizer Dhone.
+              Beli tiket event resmi dan wujudkan acara impian bersama layanan
+              Event Organizer Dhone.
             </p>
             <div class="landing-actions">
-              <a class="btn" href="home.html">Cari Konser</a
-              ><a class="btn btn-outline" href="jasa-eo.html">Jasa EO</a>
+              <a class="btn" href="konser.html">Cari Event</a
+            ><a class="btn btn-outline" href="jasa-eo.html">Jasa EO</a>
             </div>
           </div>
-          <div class="landing-image">
-            <img src="assets/images/hindia.jpg" alt="Suasana konser Hindia" />
+          <div class="hero-card">
+            <b>Cari event favoritmu</b>
+            <input id="home-search" placeholder="Nama artis atau kota" />
+            <a class="btn" href="konser.html">Cari Sekarang</a>
+            <p class="form-note">Tiket resmi, cepat, dan mudah.</p>
           </div>
         </div>
-      </section>
+    </header>
+    <main>
       <section class="container">
-        <h2 class="section-title">Kenapa Dhone?</h2>
+        <h2 class="section-title">Event pilihan</h2>
+        <p class="section-subtitle">Jangan sampai kehabisan tiket!</p>
+        <div class="grid" id="featured"></div>
+      </section>
+      <section class="gray">
+        <div class="container">
+        <h2 class="section-title">Pesan tiket dalam 3 langkah</h2>
         <div class="steps">
           <div class="step">
-            <b>🎫 Tiket Resmi</b>Beli tiket konser dengan proses pemesanan yang
-            sederhana.
+            <b>01</b>Pilih event yang ingin kamu hadiri.
           </div>
           <div class="step">
-            <b>🎵 Konser Pilihan</b>Temukan acara musik dari artis dan band
-            favoritmu.
+            <b>02</b>Masuk ke akunmu dan isi data pemesanan.
           </div>
           <div class="step">
-            <b>🎉 Jasa EO</b>Wujudkan acara pribadi, komunitas, maupun
-            perusahaan bersama kami.
+            <b>03</b>Lakukan pembayaran dan tunggu verifikasi e-tiket.
           </div>
+        </div>
         </div>
       </section>
     </main>
     <footer class="footer">
-      <div class="container">
-        © 2026 Dhone.com — Platform Tiket Konser & Event Organizer
+      <div class="container footer-grid">
+        <div><a class="logo" href="index.html">Dhone.com</a><p>Platform event dan tiket resmi untuk momen yang lebih berkesan.</p></div>
+        <div><h3>Navigasi</h3><a href="index.html">Beranda</a><a href="konser.html">Event</a><a href="jasa-eo.html">Jasa EO</a></div>
+        <div><h3>Bantuan</h3><a href="riwayat.html">Pesanan Saya</a><a href="login.html">Masuk / Daftar</a><a href="admin.html">Login Admin</a></div>
+        <div><h3>Hubungi Kami</h3><p>Email: halo@dhone.com</p><p>WhatsApp: 0812-3456-7890</p><p>Jakarta, Indonesia</p></div>
       </div>
+      <div class="container footer-bottom">© 2026 Dhone.com — Semua hak dilindungi.</div>
     </footer>
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
